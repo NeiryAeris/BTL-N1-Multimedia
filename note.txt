@@ -1,0 +1,20 @@
+Dataset size: 907 images, 20 classes
+##----Dataset loading----##
+Preprocess: resize images to 256 x 256 (this step apply for all images in every input phase)
+Process 32 images in batch at a time
+    Extracting Features: HSV, RGB, Hog, Hu(shape), texture
+        - Order of actions: read image --> mask --> contour --> extract --> normalize --> save to DB
+            - masking using Otsu technique
+            - normalization method: L2 normalization
+            - reason of normalize: due to vector's values are in different plane of value. The problem of domination in computing is possible
+        - the process are performed in parallel
+Model building: get Features out from DB --> perform KNN model building --> save KNN model in to cache
+
+##----Image searching---##
+Preprocess: resize image to 256 x 256 resolution
+Extracting Features: HSV, RGB, Hog, Hu(shape), texture
+    - Order of actions: read image --> mask --> contour --> extract --> normalize --> save to DB
+        - masking using Otsu technique
+            - normalization method: L2 normalization
+    - the process are performed in parallel
+Call KNN model --> compute vectors distance (Euclidean) --> result
