@@ -7,8 +7,3 @@ def euclidean_distance(x, y):
     for i in range(len(x)):
         squared_distance += (x[i] - y[i]) ** 2
     return squared_distance ** 0.5
-
-# def euclidean_distance(x, y):
-#     if x.shape != y.shape:
-#         return np.inf
-#     return np.sqrt(np.sum((x - y) ** 2))

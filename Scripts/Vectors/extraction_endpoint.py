@@ -2,7 +2,7 @@ import gc
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..")))
 
 import json
 import numpy as np
@@ -10,6 +10,7 @@ from tqdm import tqdm
 import concurrent.futures
 from Scripts.Utilities.DB_utils import init_db, insert_features, save_sample
 from Scripts.config import ROOT_DIR, BATCH_SIZE
+
 # from extractions import (
 #     extract_color_histogram,
 #     extract_hog,
@@ -24,9 +25,8 @@ from Scripts.Vectors.extraction import (
     extract_rgb,
     extract_shape_descriptor,
     extract_texture_descriptor,
-    extract_hog
+    extract_hog,
 )
-    
 
 
 def extract_all_features(img_path):
@@ -57,15 +57,6 @@ def process_and_store_batch(image_batch, label_batch, cursor):
             results.append(f.result())
 
     for idx, features in enumerate(results):
-        full_feature_vector = np.array(
-            features["color_histogram"]
-            + features["shape_descriptor"]
-            + features["texture_descriptor"]
-        )
-        normalized_vector = full_feature_vector / (
-            np.linalg.norm(full_feature_vector) + 1e-8
-        )
-
         insert_data.append(
             (
                 features["image_path"],
@@ -80,6 +71,7 @@ def process_and_store_batch(image_batch, label_batch, cursor):
 
     insert_features(cursor, insert_data)
     gc.collect()
+
 
 def extract_features():
     conn, c = init_db()
