@@ -18,3 +18,13 @@ Query: D:/Lab/PythonProjects/Sketch/sample_query.jpg
  - ./images\CAN_OPENER\canopenerraw19.jpg
  - ./images\CAN_OPENER\canopenerraw18.jpg
  - ./images\SOUP_SPOON\soupspoonraw18.jpg
+
+Query: D:/Laboratory/BTL N1 Multimedia/sample_query2.jpg
+ - ./images\FISH_SLICE\fishsliceraw72.jpg
+ - ./images\SERVING_SPOON\servingspoonraw93.jpg
+ - ./images\FISH_SLICE\fishsliceraw25.jpg
+
+Query: D:/Laboratory/BTL N1 Multimedia/sample_query.jpg
+ - ./images\CAN_OPENER\canopenerraw19.jpg
+ - ./images\CAN_OPENER\canopenerraw18.jpg
+ - ./images\SOUP_SPOON\soupspoonraw18.jpg
