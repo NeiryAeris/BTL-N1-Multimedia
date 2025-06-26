@@ -28,3 +28,8 @@ Query: D:/Laboratory/BTL N1 Multimedia/sample_query.jpg
  - ./images\CAN_OPENER\canopenerraw19.jpg
  - ./images\CAN_OPENER\canopenerraw18.jpg
  - ./images\SOUP_SPOON\soupspoonraw18.jpg
+
+Query: D:/Lab/PythonProjects/Sketch/sample_query.jpg
+ - ./images\CAN_OPENER\canopenerraw19.jpg
+ - ./images\CAN_OPENER\canopenerraw18.jpg
+ - ./images\SOUP_SPOON\soupspoonraw18.jpg

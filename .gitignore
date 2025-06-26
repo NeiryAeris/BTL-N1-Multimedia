@@ -4,3 +4,4 @@ images/
 cache
 image_features_sample.json
 features.db
+features.db-journal

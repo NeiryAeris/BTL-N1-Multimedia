@@ -11,6 +11,7 @@ from threading import Thread
 import sys
 
 from Scripts.config import CACHE_DIR
+from Scripts.Vectors.distant_computation import euclidean_distance
 from Scripts.Vectors.extraction import (
     extract_color_histogram,
     extract_hog,
@@ -78,11 +79,11 @@ def search_similar(input_image_path, update_callback=None, top_k=3):
         shape_db = vec[len_color + len_hog + len_rgb : len_color + len_hog + len_rgb + len_shape]
         texture_db = vec[len_color + len_hog + len_rgb + len_shape :]
 
-        d_color = np.linalg.norm(color_q - color_db)
-        d_hog = np.linalg.norm(hog_q - hog_db)
-        d_rgb = np.linalg.norm(rgb_q - rgb_db)
-        d_shape = np.linalg.norm(shape_q - shape_db)
-        d_texture = np.linalg.norm(texture_q - texture_db)
+        d_color = euclidean_distance(color_q - color_db)
+        d_hog = euclidean_distance(hog_q - hog_db)
+        d_rgb = euclidean_distance(rgb_q - rgb_db)
+        d_shape = euclidean_distance(shape_q - shape_db)
+        d_texture = euclidean_distance(texture_q - texture_db)
 
         unique_results.append((img_path, dist, d_color, d_hog, d_rgb, d_shape, d_texture))
         if len(unique_results) == top_k:

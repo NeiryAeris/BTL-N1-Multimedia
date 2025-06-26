@@ -5,6 +5,7 @@ import joblib
 
 from Scripts.config import DB_PATH, CACHE_DIR
 from Scripts.Utilities.DB_utils import load_database_features
+from Scripts.Vectors.distant_computation import euclidean_distance
 from sklearn.neighbors import NearestNeighbors
 
 HASH_FILE = os.path.join(CACHE_DIR, "db_hash.txt")
@@ -34,7 +35,7 @@ def build_knn_model():
     image_paths, color, hog, rgb, shape, texture = load_database_features()
     vectors = np.concatenate([color, hog, rgb, shape, texture], axis=1)
 
-    knn = NearestNeighbors(n_neighbors=5, metric='euclidean')
+    knn = NearestNeighbors(n_neighbors=5, metric=euclidean_distance, algorithm='brute')
     knn.fit(vectors)
 
     joblib.dump(knn, f"{CACHE_DIR}/knn_model.pkl")

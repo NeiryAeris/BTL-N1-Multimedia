@@ -3,11 +3,14 @@ import cv2
 import numpy as np
 from skimage.feature import hog, local_binary_pattern
 from skimage.color import rgb2gray
-from sklearn.preprocessing import normalize
 
 
 def normalize_vector(vec):
-    return normalize(np.array(vec).reshape(1, -1))[0].astype("float32").tolist()
+    arr = np.asarray(vec, dtype=np.float32)
+    norm = np.linalg.norm(arr)
+    if norm != 0:
+        arr = arr / norm
+    return arr.tolist()
 
 def get_object_mask(image):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
